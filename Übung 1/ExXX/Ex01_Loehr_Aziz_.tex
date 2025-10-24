@@ -87,6 +87,69 @@
     \subsection*{g) Discreteness}
         As the environment of underwater exploration is the continuously changing sea, it is a continuous environment.
 
+\section*{3) Agent Functions vs Agent Programs}
+    \subsection*{a)}
+        Yes, there can be more than one agent program that implements a given agent function. 
+        This is possible because we can use different data structures or algorithms to implement the same agent function.
+        In the example of the vacuum cleaner where it cleans if there is dirt on the sqare, else moves to the next square, there are numerous ways to implement this solution.
+        One method can be by using an if-else statement program - if the square is dirty clean, else move to the next square.
+        And another method can be by using a switch case or a lookup table program - read the state of a square and then perfrom the action related to the state in the table.
+
+    \subsection*{b)}
+        Yes, there are agent functions that cannot implemented by any agent programs.
+        Some of them are agent functions where the decision is made based on an infinite percept history or with infinite memory consumption.
+        Another case is when the agent function is computationally expensive that exceeds the limit of the machines.
+        And another case is when the solution for a problem cannot be executed mathematically.
+
+    \subsection*{c)}
+        The architecture stores the agent programs in the form of 0's and 1's.
+        Therefore, the number of distinct agent programs that an n bit storage architecture can have is atmost $2^{n}$.
+        The reason for using atmost is that the n bit storage can also store the percept history which maybe required for some of the agent programs.
+        Still, the number of configurations of percept and program remains the same, i.e. $2^{n}$.
+
+\section*{4) Two Friends}
+    \subsection*{a)Detailed Formulation}
+        \subsubsection*{i) State Space}
+            The state space should show the current positions of the two friends.
+            \[ S = \{(a,b) \mid a,b \in \text{Cities}\}\]
+        \subsubsection*{ii) Successor Function}
+            The successor function should return all the possible states that can be reached from the current state.
+            \[\text{Successor}((a, b)) = \{(a', b') \mid a' \in \text{Neighbors}(a),\; b' \in \text{Neighbors}(b)\}\]
+        \subsubsection*{iii) Goal}
+            The goal is that both the friends shoud be in the same city, i.e. a = b.
+            \[\text{Goal}((a, b)) \colon a = b\]
+        \subsubsection*{iv) Step-cost Function}
+            The step cost function will be the maximum of the distance that each friend should travel in a single iteration.
+            \[\text{Cost}((a, b),(a', b')) = \text{max}(d(a, a'), d(b, b'))\]
+
+    \subsection*{b) Heuristic Functions}
+        A heuristic function h(f) is admissable iff,
+        \[h(f) $\le$ h'(f)\]
+        where h'(f) is the true optimal distance.
+        \subsubsection*{i) D(i, j)}
+            In this case D(i, j) is admissable as the displacement is always less than or eqaul to the optimal distance between two cities.
+            \[D(i, j) $\le$ h'(f)\]
+        \subsubsection*{ii) 2.D(i, j)}
+            In this case the heuristic function is not admissable as it can be greater than the optimal distance.
+            \[2.D(i, j) > h'(f)\]
+        \subsubsection*{iii) D(i, j)/2}
+            In this case the heuristic function is admissable as dividing the lower value will always be lesser than the optimal value.
+            \[D(i, j)/2 $\le$ h'(f)\]
+
+    \subsection*{c) An example where no solution exists}
+        An example for a completely connected map where no solutions exists is the case where there are only 2 states (say A and B).
+        Since they start in adjacent cities and there is only one other state city that they can go to, they will never meet.
+        Therefore, no solution exists for this problem.
+
+    \subsection*{d) Modification of the map for the previous promblem}
+        The only way for the above map to have a solution, while being completely connected is by adding one more city to the map.
+        In this way, since they always start on adjacent cities, they can always meet at the third city.
+
+    \subsection*{e) Map in which all solutions requireing one friend to visit the same city twice}
+        \includegraphics[width=\textwidth]{FAI 1.4.png}
+        In the above map if the friends were to start from adjacent cities (say B and C), both of them would have to visit one city twice in all solutions.
+        But there are no maps where only one friend visits the same city twice in all solutions.
+
 \section*{5) Binary tree traversals}
     \includegraphics[width=\textwidth]{FAI 1.5.jpeg}
 
