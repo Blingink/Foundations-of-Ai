@@ -124,17 +124,17 @@
 
     \subsection*{b) Heuristic Functions}
         A heuristic function h(f) is admissable iff,
-        \[h(f) $\le$ h'(f)\]
+        \[h(f) \le h'(f)\]
         where h'(f) is the true optimal distance.
         \subsubsection*{i) D(i, j)}
             In this case D(i, j) is admissable as the displacement is always less than or eqaul to the optimal distance between two cities.
-            \[D(i, j) $\le$ h'(f)\]
+            \[D(i, j) \le h'(f)\]
         \subsubsection*{ii) 2.D(i, j)}
             In this case the heuristic function is not admissable as it can be greater than the optimal distance.
             \[2.D(i, j) > h'(f)\]
         \subsubsection*{iii) D(i, j)/2}
             In this case the heuristic function is admissable as dividing the lower value will always be lesser than the optimal value.
-            \[D(i, j)/2 $\le$ h'(f)\]
+            \[D(i, j)/2 \le h'(f)\]
 
     \subsection*{c) An example where no solution exists}
         An example for a completely connected map where no solutions exists is the case where there are only 2 states (say A and B).
