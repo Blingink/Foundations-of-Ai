@@ -32,5 +32,25 @@
 % Möchtest du die Nummer einer Aufgabe auf eine beliebige Zahl x setzen, schreibe vor der Aufgabe: \setcounter{exnum}{x}
 
 \section*{1) True or False?}
-    
+
+\section*{4 Crossword Puzzles}
+\subsection*{a)}
+The problem of fitting words into an empty crossword puzzle could be defined as a classical search problem like this:
+\begin{enumerate}
+    \item state space: a crossword grid with any number of word gaps filled
+    \item initial state: completely empty crossword grid
+    \item actions: choosing an item from a list of words with the right length and possibly characters on specific positions if required
+    \item transition model: fill the corresponding gap with the chosen word
+    \item goal state: completely filled crossword grid
+\end{enumerate}
+A fitting search algorithm could be Stochastic Beam Search, because you may need to try to fill the grid from a previous state if no words for a given gap can be found.
+A heuristic function for this problem could be the number of filled in gaps of the grid.
+\subsection*{b)}
+As a constraint satisfaction problem, it could look like this:
+\begin{enumerate}
+    \item variables: the chosen word for a specific gap
+    \item domains: the given list of words which can be chosen. Can be restricted to the possible options of the corresponding gap
+    \item constraints: each word has to be the corresponding length and for every overlap of two words, they must have the same character on the position of the overlap
+    \item objective: number of satisfied constraints
+\end{enumerate}
 \end{document}
