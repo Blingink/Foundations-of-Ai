@@ -106,6 +106,29 @@ In sharp contrast, \textbf{Local Beam Search} employs a cooperative and interdep
     This process of generating neighbors one at a time and moving to the first one that provides an improvement matches the description of First-Choice Hill-Climbing.
 \end{enumerate}
 
+\section*{3 Hill-Climbing Search}
+To apply the hill climbing approach to the 3X3 grid puzzle, we consider each of the board configurations as a possible state, and use a heuristic (here - number of misplaced tiles) to decide the next state.
+\[ heuristic(state) = \text{number of misplaced tiles}\]
+\begin{itemize}
+    \item[Step 1.] Start by computing the initial state's heuristic value.
+    \item[Step 2.] Generate the next valid neighboring states by sliding the blank tile to the 4 directions (but only if those moves stay inside the board).
+    \item[Step 3.] Compute the heuristic values of all the neighboring states and select the state with the least heuristic value.
+    \item[Step 4.] If the heuristic value of the selected state is less than the heuristic value of the current state, move to that state and go to step 2.
+    \item[Step 5.] Stop when the goal state is reached or when no neighbor reduces the heuristic value.
+\end{itemize}
+This algorithm can successfully reach the goal state with 4 moves.
+If the goal state is altered to the mention configuration, then the algorithm does not reach the goal state and reaches the local optimum with 4 moves.
+The local optimum state reached is,
+\[
+\begin{array}{|c|c|c|}
+    \hline
+    1 & 2 & 3 \\ \hline
+    4 & 5 & 6 \\ \hline
+    7 & 8 & \; \\ \hline
+\end{array}
+\]
+This state has a heuristic value of 2.
+
 \section*{4 Crossword Puzzles}
 \subsection*{a)}
 The problem of fitting words into an empty crossword puzzle could be defined as a classical search problem like this:
