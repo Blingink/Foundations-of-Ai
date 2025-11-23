@@ -75,7 +75,28 @@ y1s1 -> Y = -800    S = -666.67
 \\Expected minimax value = -333.33 - (-25) = -308.33
 
 \subsubsection*{c) Number of Visits and Upper Confidence Bound}
-
+To find: the number of visits($N$) and the UCB1 value for each node.
+\\The UCB1 formula for each node $i$ is:
+\[UCB1_i = V_i + C\sqrt{lnN_p/N_i}\]
+where,
+\\$V_i$: average observed outcome
+\\$n_p$: total visit count of parent node
+\\$n_i$: total visit count of node $i$
+\\Path \quad Outcomes \qquad \qquad $N_{path}$ \quad $V_{path}$(Average)
+\\$y_1s_1$ \quad -1250, -1300, -1175 \quad  3  \qquad     -1241.67
+\\$y_1s_2$ \quad -800,-800, -800  \qquad \quad 3 \qquad      -800
+\\$y_2s_1$ \quad -400, +50    \qquad \qquad \quad      2   \qquad    -175
+\\$y_2s_2$ \quad -50, -75     \qquad \qquad  \qquad     2   \qquad    -62.5
+\\$N_y$ = 10
+\\Intermediate node values and visits
+\\Node $S_1$:   $V_{S_1} = -800$    $N_{S_1} = 6$
+\\Node $S_2$:   $V_{S_2} = -62.5$   $N_{S_2} = 4$
+\\Node $Y$:   $V_{Y} = -582.5$      $N_{Y} = 10$
+\\$UCB_{y_1} = -799.38$
+\\$UCB_{y_2} = -61.74$
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{Exxx/FAI 3.jpg} 
+\end{center}
 
 \subsection*{1.3 Correctness of $\alpha-\beta$-pruning}
 \subsubsection*{a)}
