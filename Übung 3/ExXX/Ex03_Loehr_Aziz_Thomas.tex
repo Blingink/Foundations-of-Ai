@@ -57,7 +57,52 @@ Using this order will result in 3 nodes being pruned, with two of them being lea
 Using this order, none of the nodes can be pruned.
 
 \subsection*{1.2 Games of Chance }
+\subsubsection*{a) Resulting Search Tree}
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{Exxx/FAI 3.2.png} 
+\end{center}
+
+\subsubsection*{b) Expected Minimax Value}
+y1s1 -> Y = -800    S = -666.67
+\\y1s2 ->             S = 0
+\\Therefore, if Y choses y1, then S will choose s2.
+\\y2s1 -> Y = 0       S = -25
+\\y2s2 ->             S = 0
+\\If, Y choses y2, then S will likely choose s1, as there is a possibility that Y will land in Park Lane in the next round, hence gaining much more.
+\\Then, Y = -333.33
+\\For Y, y1 gives -800, while y2 gives -333.33. So y2 is selected.
+\\Therefore, y2s1
+\\Expected minimax value = -333.33 - (-25) = -308.33
+
+\subsubsection*{c) Number of Visits and Upper Confidence Bound}
+
+
 \subsection*{1.3 Correctness of $\alpha-\beta$-pruning}
+\subsubsection*{a)}
+For a max-node the true minimax value is the maximum over all children. If the best value seen so far is $\gamma$, then the final minimax value 
+val($n_0$) satisfies,
+\[ val(n_0) \ge \gamma \]
+
+\subsubsection*{b)}
+For each node $n_i$ its siblings are denoted \{$n_{i1}$,.....,$n_{ib_i}$\} and the parent relation is $n_i$ \in children($n_{i-1}$). The type (min/max) alternates along the path.
+\\If $n_i$ is a min-node:
+\[ n_i = min(n_{i+1}, n_{i1}, n_{i2}, ....., n_{ib_i})\]
+If $n_i$ is a max-node:
+\[ n_i = max(n_{i+1}, n_{i1}, n_{i2}, ....., n_{ib_i})\]
+
+\subsubsection*{c)}
+If $n_i$ is a min-node:
+\[ n_i = min(l_i, n_{i+1}, r_i)\]
+If $n_i$ is a max-node:
+\[ n_i = max(l_i, n_{i+1}, r_i)\]
+
+\subsubsection*{d)}
+Because $n_1$ is a min-node, one immediate upper bound on the final $n_1$ comes from its already-seen left-children, $l_1$.
+\[ n_i = min(l_i, (other children))\]
+So if the value contributed by the path is $\le$ $l_1$, then the minimum will remain $l_1$ and the path cannot lower $n_1$.
+\\Because the path alternates min/max and $n_j$ is a max-nod, the min-ancestors along the path are exactly 1,3,5,...,j-1.
+\\Therefore if $n_j$ is to affect $n_1$, then:
+\[ n_j < min(l_1, l_3, l_5, ...., l_{j-1})\]
 
 \section*{2 Propositional Logic}
 \subsection*{2.1 Who is lying?}
