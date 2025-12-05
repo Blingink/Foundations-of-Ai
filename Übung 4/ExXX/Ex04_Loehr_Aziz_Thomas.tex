@@ -49,48 +49,46 @@
 
 \subsubsection*{Solutions}
 
-\begin{enumerate}
-    \renewcommand{\labelenumi}{\textbf{\alph.}} 
-    \item \textbf{a.    There is an ice cream flavor loved by everyone.}
+\begin{enumerate}[label=\alph*.]
+    %\renewcommand{\labelenumi}{\textbf{\alph.}} 
+    \item \textbf{There is an ice cream flavor loved by everyone.}
     \[\exists x (F(x) \land \forall y (P(y) \rightarrow L(y, x)))\]
 
-    \item \textbf{b.    It is not true that everyone loves some ice cream flavor.}
+    \item \textbf{It is not true that everyone loves some ice cream flavor.}
     \[
     \neg \forall x (P(x) \rightarrow \exists y (F(y) \land L(x, y)))
     \]
 
-    \item \textbf{c.    Anyone who does not shave himself must be shaved by the barber.}
+    \item \textbf{Anyone who does not shave himself must be shaved by the barber.}
     \[
     \forall x (P(x) \land \neg S(x, x) \rightarrow S(b, x))
     \]
 
-    \item \textbf{d.    Whomever the barber shaves, must not shave himself.}
+    \item \textbf{Whomever the barber shaves, must not shave himself.}
     \[
     \forall x (P(x) \land S(b, x) \rightarrow \neg S(x, x))
     \]
 
-    \item \textbf{e.    Rudolph is a reindeer and Rudolph has a red nose.}
+    \item \textbf{Rudolph is a reindeer and Rudolph has a red nose.}
     \[
     R(r) \land N(r)
     \]
 
-    \item \textbf{f.    Anyone with a red nose is weird or is a clown.}
+    \item \textbf{Anyone with a red nose is weird or is a clown.}
     \[
     \forall x (N(x) \rightarrow (W(x) \lor C(x)))
     \]
 
-    \item \textbf{g.    No reindeer is a clown.}
+    \item \textbf{No reindeer is a clown.}
     \[
     \forall x (R(x) \rightarrow \neg C(x))
     \]
-    
 \end{enumerate}
+
 \subsection*{1.2 Clausal Forms }
-\begin{enumerate}
-    \renewcommand{\labelenumi}{\textbf{\alph.}}
+\begin{enumerate}[label=\alph*.]
 
-
-    \item \textbf{a.    \forall x \forall y (R(x, y) \rightarrow (R(x, y) \land Q(y)))}
+    \item \textbf{$\forall x \forall y (R(x, y) \rightarrow (R(x, y) \land Q(y)))$}
     
     Step 1: Eliminate implication ($A \rightarrow B \equiv \neg A \lor B$)
     \[ \forall x \forall y (\neg R(x, y) \lor (R(x, y) \land Q(y))) \]
@@ -109,7 +107,7 @@
     \[ \{ \neg R(x, y), Q(y) \} \]
 
     % --- Problem B ---
-    \item \textbf{b.   \forall x \exists y \forall z (P(x, y, z) \rightarrow \exists u R(x, u, z))}
+    \item \textbf{$\forall x \exists y \forall z (P(x, y, z) \rightarrow \exists u R(x, u, z))$}
 
     Step 1: Eliminate implication
     \[ \forall x \exists y \forall z (\neg P(x, y, z) \lor \exists u R(x, u, z)) \]
@@ -131,7 +129,7 @@
     \[ \{ \neg P(x, f(x), z), R(x, g(x, z), z) \} \]
 
 
-    \item \textbf{c.    \forall x (\neg \exists y P(x, y) \land \neg (Q(x) \land \neg R(x)))}
+    \item \textbf{$\forall x (\neg \exists y P(x, y) \land \neg (Q(x) \land \neg R(x)))$}
 
     Step 1: Move negations inward
     \[ \forall x (\forall y \neg P(x, y) \land (\neg Q(x) \lor \neg \neg R(x))) \]
@@ -206,6 +204,93 @@ The clause contains only the answer literal. Thus, the Knowledge Base entails th
 
 \section*{2 Uncertainty}
 \subsection*{2.1 Probability}
+\subsubsection*{a)}
+\[
+P(\text{bribed} \mid \text{allowed to stay})
+= \frac{P(\text{allowed to stay} \mid \text{bribed}) \cdot P(\text{bribed})}{P(\text{allowed to stay})}
+\]
+
+\[
+P(\text{allowed to stay} \mid \text{bribed})=\frac{4}{5}
+\]
+
+\[
+P(\text{allowed to stay} \mid \neg\text{bribed})=\frac{1}{3}
+\]
+
+\[
+P(\text{bribed})=\frac{1}{4}
+\]
+
+\[
+P(\text{allowed to stay})
+= \sum_{z \in \mathrm{dom}(bribed)} P(\text{allowed to stay} \mid z) \cdot P(z)
+\]
+\[
+= \frac{4}{5}\cdot\frac{1}{4}
++ \frac{1}{3}\cdot\frac{3}{4}
+= \frac{4}{20} + \frac{3}{12}
+= \frac{4}{20} + \frac{5}{20}
+= \frac{9}{20}
+\]
+
+\[
+P(\text{bribed} \mid \text{allowed to stay})
+= \frac{\tfrac{4}{5}\cdot \tfrac{1}{4}}{\tfrac{9}{20}}
+= \frac{4}{20} \cdot \frac{20}{9}
+= \frac{4}{9}
+\]
+
+\subsubsection*{b)}
+
+The participents bribe twice or never
+
+\[
+\text{Bribing:}\quad
+P(\text{stays show 1 and 2} \mid \text{bribed})
+= \left(\frac{4}{5}\right)^2
+= \frac{16}{25}
+\]
+
+\[
+\text{Not bribing:}\quad
+P(\text{stays show 1 and 2} \mid \neg\text{bribed})
+= \left(\frac{1}{2}\right)^2
+= \frac{1}{4}
+\]
+
+\[
+P(\text{stays show 1 and 2})
+= \frac{16}{25}\cdot \frac{1}{4}
++ \frac{1}{4}\cdot \frac{3}{4}
+= \frac{4}{25} + \frac{3}{16}
+= \frac{64}{400} + \frac{75}{400}
+= \frac{139}{400}
+\approx 0.34625
+\]
+
+\subsubsection*{c)}
+
+\[
+P(\text{bribed} \mid \text{allowed to stay})
+= \frac{4}{9}
+\]
+\[
+P(\neg\text{bribed} \mid \text{allowed to stay})
+= 1 - \frac{4}{9}
+= \frac{5}{9}
+\]
+
+\[
+P(\text{kicked off in second show}) 
+= \sum_{z \in \mathrm{dom}(bribed)} P(\text{kicked off in second show} \mid z) \cdot P(z)
+\]
+\[
+= \frac{4}{9}\cdot \frac{1}{5}
++ \frac{5}{9}\cdot \frac{2}{3}
+= \frac{4}{45} + \frac{10}{27}
+\approx 0.4593
+\]
 
 \subsection*{2.2 Naive Bayes’ Classifier}
 
