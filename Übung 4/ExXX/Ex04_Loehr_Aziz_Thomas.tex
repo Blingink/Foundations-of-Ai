@@ -293,5 +293,20 @@ P(\text{kicked off in second show})
 \]
 
 \subsection*{2.2 Naive Bayes’ Classifier}
+The Naive Bayes' model states that:
+\[P(Cause|e) \propto P(Cause).\Pi_jP(e_j|Course)\]
+Therefore, by finding the larger value of \(P(yes|x)\) and \(P(no|x)\) we can find what class x will take, given that x is the case where age \leq 30, income = high, Married = yes and credit-rating = fair.
+
+\[P(yes) = \frac{9}{14}\]
+\[P(no) = \frac{5}{14}\]
+
+\[P(yes|x) = P(yes).(P(age\leq30|yes).P(income=high|yes).P(married=yes|yes).P(cr=fair|yes))\]
+\[= \frac{9}{14}*\frac{2}{9}*\frac{2}{9}*\frac{7}{9}*\frac{6}{9} = \frac{12}{729} \approx 0.01646\]
+
+\[P(no|x) = P(no).(P(age\leq30|no).P(income=high|no).P(married=yes|no).P(cr=fair|no))\]
+\[= \frac{5}{14}*\frac{3}{5}*\frac{2}{5}*\frac{1}{5}*\frac{2}{5} = \frac{12}{1750} \approx 0.00686\]
+
+\[\]
+Since \(P(yes|x) > P(no|x)\), the class of the given example is yes. \(buy\textunderscore car = yes\)
 
 \end{document}
